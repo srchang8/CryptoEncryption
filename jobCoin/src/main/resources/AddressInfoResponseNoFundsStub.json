@@ -1,0 +1,11 @@
+{
+  "balance":"0",
+  "transactions":
+  [
+    {	"timestamp":"2019-07-10T17:06:44.396Z",
+      "fromAddress": "BobsAddress",
+      "toAddress":"abc",
+      "amount":"0"
+    }
+  ]
+}
