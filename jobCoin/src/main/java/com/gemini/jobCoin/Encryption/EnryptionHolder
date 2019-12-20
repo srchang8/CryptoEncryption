@@ -1,0 +1,39 @@
+package com.gemini.jobCoin.EncryptionHolder;
+
+
+public class EncryptionHolder {
+
+    //Build chain using inorder and preordered nodes
+    //the ordered nodes should not have duplicates
+    public TreeNode buildChain(int[] preOrder, int[] inOrder){
+
+        HashMap<Integer, Integer> map = new HashMap();
+        for (int i=0; i<inOrder.length; i++){
+            map.put(inOrder[i], i);
+        }
+
+        Stack<TreeNode> stack = new Stack();
+        TreeNode root = new TreeNode(preOrder[0]);
+        stack.push(root);
+
+        for (int i=1; i<preOrder.length; i++){
+
+            TreeNode node = new TreeNode(preOrder[i]);
+
+            if ( map.get(preOrder[i]) < map.get(stack.peek().val) ){
+                stack.peek().left = node;
+            }else{
+
+                TreeNode parent = null;
+                while(!stack.isEmpty() && map.get(preOrder[i]) > map.get(stack.peek.val)){
+                    parent = stack.pop();
+                }
+                parent.right = node;
+            }
+            stack.push(node);
+        }
+
+        return root;
+    }
+
+}
