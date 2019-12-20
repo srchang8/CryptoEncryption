@@ -36,4 +36,39 @@ public class EncryptionHolder {
         return root;
     }
 
+
+    public List<String> fillMissingAccounts(int[] account, int lower, int higher){
+
+        List<String> result = new ArrayList<String>();
+
+        if (account.length == 0){
+            result.add(getRanges(lower,higher));
+            return result;
+        }
+
+        if (lower < account[0]){
+            result.add(lower, account[0]-1);
+        }
+
+        for (int i=0; i<account.length; i++){
+            if (account[i] != account[i+1] && account[i+1] > account[i]+1){
+                result.add(getRanges(account[i]+1, account[i+1]-1));
+            }
+        }
+
+        if (account[account.length-1] < higher){
+            result.add(account[account.length-1]+1, higher);
+        }
+
+        return result;
+    }
+
+    public String getRanges(int start, int end){
+
+        if (start == end){
+            return start;
+        }
+        return String.valueOf(start) + " Account ranges " + String.valueOf(higher);
+    }
+
 }
