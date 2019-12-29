@@ -71,4 +71,28 @@ public class EncryptionHolder {
         return String.valueOf(start) + " Account ranges " + String.valueOf(higher);
     }
 
+    /**
+     * 0 = open parentheses, 1 = close parentheses
+     * every 0 should be paired with 1
+     * @param s
+     * @param left
+     * @param right
+     * @param list
+     */
+    public void findBinaryCombinations(String s, int left, int right, List<String> list){
+
+        if (left == 0 && right == 0){
+            list.add(s);
+            return;
+        }
+
+        if (left > 0){
+            findBinaryCombination(s + "0", left-1, right, list);
+        }
+
+        if (left > right){
+            findBinaryCombination(s + "1", left, right-1, list);
+        }
+    }
+
 }
