@@ -126,6 +126,31 @@ public class EncryptionHolder {
 
     }
 
+    /**
+     *
+     * find left and right accounts using inorder traversal
+     * space complexity o(n)
+     * time complexity o(n)
+     */
+    public List<Integer> searchInorder(AccountNode root){
+
+        Stack<AccountNode> stack = new Stack();
+        List<Integer> result = new ArrayList<Integer>();
+
+        while (!stack.isEmpty() || root != null){
+
+            while (root != ull){
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            result.add(root.val);
+            root = root.right;
+        }
+
+        return result;
+    }
+
 }
 
 
