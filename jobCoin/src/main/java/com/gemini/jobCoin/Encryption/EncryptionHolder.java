@@ -95,4 +95,53 @@ public class EncryptionHolder {
         }
     }
 
+    /**
+     * sort large number of buy, sell and pending transactions
+     * space complexity o(1)
+     * time complexity o(n)
+     *
+     * buy = 0, pending = 1, sell = 2
+     */
+    public void sortAccounts(int[] transactions){
+
+        int start = 0;
+        int end = transactions.length-1;
+        int search = 0;
+
+        while (search <= end){
+
+            if (transactions[search] = 0){
+                transactions[search] = transactions[start];
+                transactions[start] = 0;
+                start++;
+                search++;
+            }else if (transactions[search] = 2){
+                transactions[search] = transactions[end];
+                transactions[end] = 2;
+                end--;
+            }else{
+                search++;
+            }
+        }
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
