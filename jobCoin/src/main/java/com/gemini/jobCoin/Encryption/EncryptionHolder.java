@@ -151,6 +151,52 @@ public class EncryptionHolder {
         return result;
     }
 
+    /**
+     * Shuffle accounts
+     *
+     *
+     */
+    public List<List<AccountNode>> shuffleAccount (AccountNode root){
+
+        List<List<Integer>> result = new ArrayList();
+        if (root == null){
+            return result;
+        }
+
+        Queue<AccountNode> queue = LinkedList<AccountNode>();
+        int level =0;
+        queue.add(root);
+        boolean reverse = false;
+
+        while (!queue.isEmpty()){
+
+            result.add(new LinkedList<Integer>());
+            int currQsize = queue.size();
+
+            for (int i =0; i<currQsize; i++){
+
+                AccountNode node = queue.poll();
+
+                if (reverse){
+                    result.get(level).add(0, node.val);
+                }else{
+                    result.get(level).add(node.val);
+                }
+
+                if (node.left != null){
+                    queue.add(node.left);
+                }
+                if(node.right != null){
+                    queue.add(node.right);
+                }
+            }
+            level++;
+            reverse = !reverse;
+        }
+
+        return result;
+    }
+
 }
 
 
