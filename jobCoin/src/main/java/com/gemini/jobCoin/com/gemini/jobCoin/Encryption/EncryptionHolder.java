@@ -2,7 +2,9 @@ package com.gemini.jobCoin.Encryption;
 
 
 import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Stack;
 
 public class EncryptionHolder {
@@ -232,7 +234,36 @@ public class EncryptionHolder {
     }
 
 
+    HashMap<String, String> FamilyMap = new HashMap<String,String>();
+    List<String> result = new ArrayList<>();
 
+    public List<String> idFamilyCombinationFinder(String digits){
+
+        List<String> result = new ArrayList<>();
+
+        if (digits.length() == 0) return result;
+
+        idFamilyCombinationFinderHelper("", digits);
+        return result;
+    }
+
+    public void idFamilyCombinationFinderHelper(String combo, String nextDigit){
+
+        if (nextDigit.length() == 0){
+            result.add(combo);
+            return;
+        }
+
+        String digit = nextDigit.substring(0,1);
+        String letters = FamilyMap.get(digit);
+
+        for (int i=0; i<letters.length(); i++){
+
+            String letter = letters.substring(i, i+1);
+            idFamilyCombinationFinderHelper(combo + letter, nextDigit.substring(1));
+        }
+
+    }
 
 
 
