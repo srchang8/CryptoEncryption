@@ -1,5 +1,9 @@
-package com.gemini.jobCoin.EncryptionHolder;
+package com.gemini.jobCoin.Encryption;
 
+
+import javax.swing.tree.TreeNode;
+import java.util.HashMap;
+import java.util.Stack;
 
 public class EncryptionHolder {
 
@@ -196,6 +200,43 @@ public class EncryptionHolder {
 
         return result;
     }
+
+
+    //will return -1 if combination does not exist
+    public int minAmountCoins(int[] coins, int dollars){
+
+        int[] amountTracker = new int[dollars];
+
+        return minAmountCoinsHelper(coins, dollars, amountTracker);
+
+    }
+
+    public int minAmountCoinsHelper(int[] coins, int subAmount, int[] amountTracker){
+
+        if (subAmount == 0) return 0;
+        if (subAmount < 0) return -1;
+        if (amountTracker[subAmount-1] != 0) return amountTracker[subAmount-1];
+
+        int min = Integer.MAX_VALUE;
+
+        for (int coin : coins){
+
+            int result = minAmountCoinsHelper(coins, subAmount - coin, amountTracker);
+            if (result < min && result >= 0){
+                min = 1 + result;
+            }
+        }
+
+        amountTracker[subAmount-1] = (min == Integer.MAX_VALUE) ? -1 : min;
+        return amountTracker[subAmount-1];
+    }
+
+
+
+
+
+
+
 
 }
 
