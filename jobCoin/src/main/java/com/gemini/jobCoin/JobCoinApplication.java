@@ -20,7 +20,7 @@ public class JobCoinApplication {
 
 
 		/*
-		1. generate list address
+		1. generate list addressmvn
 		2. call mixer to get deposit address
 		deposit
 		3. send bitcoin to deposit address

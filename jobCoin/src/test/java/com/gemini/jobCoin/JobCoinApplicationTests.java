@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Profile("local")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class JobCoinApplicationTests {
