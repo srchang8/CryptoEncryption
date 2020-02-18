@@ -265,9 +265,39 @@ public class EncryptionHolder {
 
     }
 
+    public void cleanGrid(int[][] grid){
+        
+        boolean[] row = new boolean[grid.length];
+        boolean[] col = new boolean[grid[0].length];
+        
+        for (int i=0; i<row.length; i++){
+            for (int j=0; j<col.length; i++){
+                 if (grid[i][j] == 0){
+                    row[i] = true;
+                    col[j] = true;
+                 }
+            }
+            
+         for (int i=0; i<row.length; i++){
+             if (row[i]) setRow(grid, i);             
+         }
+         for (int i=0; i<col.length; i++){
+            if (col[i]) setCol(grid, i);   
+         }
+    }
+    
 
-
-
+     public void setRow(int[][] g, int r){
+            for (int i = 0; i<g[0].length; i++){
+                g[r][i] = 0;
+            }
+        }
+      
+     public void setCol(int[][] g, int c){
+            for (int i=0; i<g.length; i++){
+                g[i][c] = 0;
+            }
+     }
 
 }
 
