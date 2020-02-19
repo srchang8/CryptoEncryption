@@ -298,7 +298,28 @@ public class EncryptionHolder {
                 g[i][c] = 0;
             }
      }
-
+        
+     
+     public List<Integer> inOrderFinder(Treenode node){
+         
+      List<Integer> result = new ArrayList();
+      if (node == null) return result;
+         
+         Stack<Integer> stack = new Stack();
+                 
+         while (!stack.isEmpty() || node != null){
+             while (node != null){
+                stack.push(node);
+                node = node.left;
+             }
+             
+             node = stack.pop();
+             result.add(node);
+             node = node.right;
+         }
+       
+        return result
+     }
 }
 
 
