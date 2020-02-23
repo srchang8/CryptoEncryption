@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
+import com.gemini.jobCoin.domain.AccountNode;
 
 public class EncryptionHolder {
+
+    private Object AccountNode;
 
     //Build chain using inorder and preordered nodes
     //the ordered nodes should not have duplicates
@@ -53,7 +56,7 @@ public class EncryptionHolder {
         }
 
         if (lower < account[0]){
-            result.add(lower, account[0]-1);
+            result.add(getRanges(lower, account[0] - 1));
         }
 
         for (int i=0; i<account.length; i++){
@@ -72,9 +75,9 @@ public class EncryptionHolder {
     public String getRanges(int start, int end){
 
         if (start == end){
-            return start;
+            return Integer.toString(start);
         }
-        return String.valueOf(start) + " Account ranges " + String.valueOf(higher);
+        return String.valueOf(start) + " Account ranges " + String.valueOf(end);
     }
 
     /**
@@ -99,6 +102,9 @@ public class EncryptionHolder {
         if (left > right){
             findBinaryCombination(s + "1", left, right-1, list);
         }
+    }
+
+    private void findBinaryCombination(String s, int left, int i, List<String> list) {
     }
 
     /**
@@ -140,7 +146,7 @@ public class EncryptionHolder {
      */
     public List<Integer> searchInorder(AccountNode root){
 
-        Stack<AccountNode> stack = new Stack();
+        Stack<com.gemini.jobCoin.domain.AccountNode> stack = new Stack();
         List<Integer> result = new ArrayList<Integer>();
 
         while (!stack.isEmpty() || root != null){
@@ -282,7 +288,26 @@ public class EncryptionHolder {
 
         return profit;
     }
+
+
+    public boolean isTrippleIncrease(int[] days){
         
+        int min = Integer.MAX_VALUE;
+        int min2 = Integer.MAX_VALUE;
+        
+        for (int i=0; i<days.length; i++){
+            
+            if (days[i] <= min){
+                min = days[i];
+            }else if (days[i] <= min2){
+                min2 = days[i];
+            }else{
+                return false;
+            }
+        }
+        
+        return false;
+    }
 
 }
 
