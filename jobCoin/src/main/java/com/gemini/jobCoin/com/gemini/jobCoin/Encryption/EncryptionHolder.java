@@ -265,61 +265,25 @@ public class EncryptionHolder {
 
     }
 
-    public void cleanGrid(int[][] grid){
-        
-        boolean[] row = new boolean[grid.length];
-        boolean[] col = new boolean[grid[0].length];
-        
-        for (int i=0; i<row.length; i++){
-            for (int j=0; j<col.length; i++){
-                 if (grid[i][j] == 0){
-                    row[i] = true;
-                    col[j] = true;
-                 }
-            }
-            
-         for (int i=0; i<row.length; i++){
-             if (row[i]) setRow(grid, i);             
-         }
-         for (int i=0; i<col.length; i++){
-            if (col[i]) setCol(grid, i);   
-         }
-    }
-    
+    public int maxProfit(int[] days){
 
-     public void setRow(int[][] g, int r){
-            for (int i = 0; i<g[0].length; i++){
-                g[r][i] = 0;
+        if (days.length==0) return 0;
+        int profit =0;
+        int min=days[0];
+
+        for (int i=1; i<days.length; i++){
+            if (days[i] < min){
+                min = days[i];
+            }else if (days[i] > min ){
+                profit = Math.max(profit, days[i] - min);
             }
         }
-      
-     public void setCol(int[][] g, int c){
-            for (int i=0; i<g.length; i++){
-                g[i][c] = 0;
-            }
-     }
+
+
+        return profit;
+    }
         
-     
-     public List<Integer> inOrderFinder(Treenode node){
-         
-      List<Integer> result = new ArrayList();
-      if (node == null) return result;
-         
-         Stack<Integer> stack = new Stack();
-                 
-         while (!stack.isEmpty() || node != null){
-             while (node != null){
-                stack.push(node);
-                node = node.left;
-             }
-             
-             node = stack.pop();
-             result.add(node);
-             node = node.right;
-         }
-       
-        return result
-     }
+
 }
 
 
