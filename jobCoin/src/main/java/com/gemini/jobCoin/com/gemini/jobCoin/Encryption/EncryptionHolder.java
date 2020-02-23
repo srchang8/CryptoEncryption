@@ -309,6 +309,34 @@ public class EncryptionHolder {
         return false;
     }
 
+    List<List<Integer>> resultingPrice = new ArrayList();
+    public List<List<Integer>> findCombinations(int[] days){
+
+        if (days.length == 0) return resultingPrice;
+        findCombinationHelper(new ArrayList<Integer>(), days);
+        return resultingPrice;
+
+    }
+
+    public void findCombinationHelper(List<Integer> tempList, int[] days){
+
+        if (tempList.size() == days.length){
+            resultingPrice.add(new ArrayList(tempList));
+            return;
+        }
+
+        for (int price : days){
+
+            if (tempList.contains(price)){
+                continue;
+            }
+            tempList.add(price);
+            findCombinationHelper(tempList, days);
+            tempList.remove(tempList.size()-1);
+        }
+
+    }
+
 }
 
 
