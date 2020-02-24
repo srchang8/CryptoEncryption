@@ -3,9 +3,9 @@ package com.gemini.jobCoin.domain;
 
 public class AccountNode {
 
-    int val;
-    AccountNode left;
-    AccountNode right;
+    public int val;
+    public AccountNode left;
+    public AccountNode right;
     AccountNode(int num){
         val = num;
     }
