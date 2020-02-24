@@ -2,10 +2,8 @@ package com.gemini.jobCoin.Encryption;
 
 
 import javax.swing.tree.TreeNode;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+
 import com.gemini.jobCoin.domain.AccountNode;
 
 public class EncryptionHolder {
@@ -27,7 +25,42 @@ public class EncryptionHolder {
 
         for (int i=1; i<preOrder.length; i++){
 
-            TreeNode node = new TreeNode(preOrder[i]);
+            TreeNode node = new TreeNode(preOrder[i]) {
+                @Override
+                public TreeNode getChildAt(int childIndex) {
+                    return null;
+                }
+
+                @Override
+                public int getChildCount() {
+                    return 0;
+                }
+
+                @Override
+                public TreeNode getParent() {
+                    return null;
+                }
+
+                @Override
+                public int getIndex(TreeNode node) {
+                    return 0;
+                }
+
+                @Override
+                public boolean getAllowsChildren() {
+                    return false;
+                }
+
+                @Override
+                public boolean isLeaf() {
+                    return false;
+                }
+
+                @Override
+                public Enumeration children() {
+                    return null;
+                }
+            };
 
             if ( map.get(preOrder[i]) < map.get(stack.peek().val) ){
                 stack.peek().left = node;
@@ -151,7 +184,7 @@ public class EncryptionHolder {
 
         while (!stack.isEmpty() || root != null){
 
-            while (root != ull){
+            while (root != null){
                 stack.push(root);
                 root = root.left;
             }
