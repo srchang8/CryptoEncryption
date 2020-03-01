@@ -370,6 +370,33 @@ public class EncryptionHolder {
 
     }
 
+    public List<Integer> getKthMostFrequentyAccount(int[] accounts, int k){
+
+        List<Integer> result = new ArrayList();
+        List<Integer>[] bucket = new List[accounts.length+1];
+        HashMap<Integer, Integer> freqMap = new HashMap();
+        for (int account : accounts){
+            freqMap.put(account, freqMap.getOrDefault(account, 0) + 1);
+        }
+
+        for (int key : freqMap.keySet()){
+            int frequency = freqMap.get(key);
+            if (bucket[frequency] == null){
+                bucket[frequency]= new ArrayList();
+            }
+            bucket[frequency].add(key);
+        }
+
+        for (int i=bucket.length-1; i>=0 && result.size() < k; i--){
+            if (bucket[i] != null){
+                result.addAll(bucket[i]);
+            }
+        }
+
+
+        return result;
+    }
+
 }
 
 
