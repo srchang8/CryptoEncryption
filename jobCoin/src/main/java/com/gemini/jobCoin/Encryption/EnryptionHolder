@@ -70,5 +70,33 @@ public class EncryptionHolder {
         }
         return String.valueOf(start) + " Account ranges " + String.valueOf(higher);
     }
+    
+      public int findAccountKthLargest(int[] nums, int k) {
+        
+        if (nums.length == 0) return 0;
+        
+        PriorityQueue<Integer> pQueue = new PriorityQueue<Integer>();
+        
+        for (int num : nums ){
+            pQueue.add(num);
+            if (pQueue.size() > k) pQueue.poll();
+        }
+        
+        
+        return pQueue.poll();
+    }
+    
+    public boolean accountReachable(int[] accounts) {
+        
+        int lastPos = accounts.length-1;
+        for (int i=accounts.length-1; i>=0; i--){
+            if (i + accounts[i] >= lastPos){
+                lastPos = i;
+            }
+        }
+        
+        return lastPos == 0;
+        
+    }
 
 }
