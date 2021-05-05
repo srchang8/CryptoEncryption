@@ -432,6 +432,76 @@ public class EncryptionHolder {
         return false;
     }
 
+
+    /*
+    // 1. Find initial rotten oranges
+//   count fresh oranges
+//
+//
+// 2. BFS traverse(level)
+//     check bounds
+//     increase minutes
+//     find rotten oranges
+//     store in Queue
+//      minues fresh org
+
+
+public int orangesRotting(int[][] grid) {
+
+
+Queue<int[]> queue = new LinkedList();
+int freshOrg = 0;
+int minutes = 0;
+
+int[][] directions = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+
+for (int y=0; y<grid.length; y++){
+  for (int x=0; x<grid[0].length; x++){
+    if (grid[y][x] == 2){
+      queue.offer(new int[]{y,x});
+    }else if ( grid[y][x] == 1){
+      freshOrg++;
+    }
+  }
+}
+
+
+if (freshOrg == 0) return 0;
+
+while (!queue.isEmpty()){
+  int qSize = queue.size();
+  minutes++;
+  for (int i=0; i<qSize; i++){
+    int[] orange = queue.poll();
+
+    for (int[] direction : directions){
+      int y = orange[0] + direction[0];
+      int x = orange[1] + direction[1];
+
+      if (y<0 || y>=grid.length || x<0 || x>=grid[0].length || grid[y][x] !=1){
+        continue;
+      }
+      grid[y][x] = 2;
+      queue.offer(new int[]{y,x});
+      freshOrg--;
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+     */
+
+
 }
 
 
