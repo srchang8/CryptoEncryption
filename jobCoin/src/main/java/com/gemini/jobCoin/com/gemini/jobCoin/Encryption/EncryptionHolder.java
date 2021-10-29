@@ -413,25 +413,28 @@ public class EncryptionHolder {
         return false;
     }
 
-    public boolean accountExistHelper(char[][] board, String account, int row, int col, int count){
-
-        if (row < 0 || row >= board.length || col < 0 || col >= board[row].length ||
-                board[row][col] != account.charAt(count) || visited[row][col]){
-            return false;
-        }
-
-        visited[row][col] = true;
-
-        if (accountExistHelper(board, account, row+1, col, count+1) ||
-                accountExistHelper(board, account, row-1, col, count+1) ||
-                accountExistHelper(board, account, row, col+1, count+1) ||
-                accountExistHelper(board, account, row, col-1, count+1)){
-            return true;
-        }
-
-        visited[row][col] = false;
-        return false;
-    }
+//    public boolean accountExistHelper(char[][] board, String account, int row, int col, int count){
+//
+//        if (row < 0 || row >= board.length || col < 0 || col >= board[row].length ||
+//                board[row][col] != account.charAt(count) || visited[row][col]){
+//            return false;
+//        }
+//
+//        visited[row][col] = true;
+//
+//        if (accountExistHelper(board, account, row+1, col, count+1) ||
+//                accountExistHelper(board, account, row-1, col, count+1) ||
+//                accountExistHelper(board, account, row, col+1, count+1) ||
+//                accountExistHelper(board, account, row, col-1, count+1)){
+//            return true;
+//        }
+//
+//        visited[row][col] = false;
+//        return false;
+//
+//
+//
+//    }
 
 
     //fix comments
