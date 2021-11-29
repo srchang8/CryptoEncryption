@@ -242,7 +242,54 @@ public class Mixer {
         return dummy.right;
     }
 
+
+    public TreeNode findLCA(TreeNode root, TreeNode p, TreeNode q){
+
+        HashMap<TreeNode, TreeNode> map = new HashMap();
+        map.put(root, null);
+
+        Queue<TreeNode> queue = new LinkedList();
+        queue.offer(root);
+
+        while (!map.containsKey(p) || !map.containsKey(q)){
+
+            TreeNode node = queue.poll();
+
+            if (node.left != null){
+                map.put(node.left, node);
+                queue.offer(node.left);
+            }
+
+            if (node.right != null){
+                map.put(node.right, node);
+                queue.offer(node.right);
+            }
+
+        }
+
+        HashSet<TreeNode> pAncestSet = new HashSet();
+        while (p != null){
+            pAncestSet.add(p);
+            p = map.get(p);
+        }
+
+        while (!pAncestSet.contains(q)){
+            q = map.get(q);
+        }
+        return p;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
