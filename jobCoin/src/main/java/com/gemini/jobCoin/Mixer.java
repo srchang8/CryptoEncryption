@@ -104,6 +104,8 @@ public class Mixer {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(dollAddressRunnable, 0, 10, TimeUnit.SECONDS);
 
+
+
     }
 
 
