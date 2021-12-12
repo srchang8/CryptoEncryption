@@ -44,7 +44,7 @@ public class AdvMixer {
 
         while (i < j){
             if (s.charAt(i) != s.charAt(j)){
-                return checkSingleRemoveHelper(s, i+1, j) || checkSingleRemoveHelper(s, i, j-1)
+                return checkSingleRemoveHelper(s, i+1, j) || checkSingleRemoveHelper(s, i, j-1);
             };
             i++;
             j--;
@@ -63,5 +63,30 @@ public class AdvMixer {
         return true;
     }
 
+    public int[] findViews(int[] heights){
 
+        int[] res = new int[heights.length];
+        int count = heights.length-1;
+
+        int max = 0;
+
+        for (int i=heights.length-1; i>=0; i--){
+            if (heights[i] > max){
+                res[count--] = i;
+                max = heights[i];
+            }
+        }
+        return res;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
