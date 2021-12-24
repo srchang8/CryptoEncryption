@@ -33,6 +33,7 @@ public class AdvMixer {
         }
 
         return sb.toString().replaceAll("\\*", "");
+
     }
 
 
