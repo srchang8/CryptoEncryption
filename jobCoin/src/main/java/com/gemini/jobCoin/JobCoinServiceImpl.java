@@ -25,8 +25,8 @@ public class JobCoinServiceImpl implements JobCoinServiceInt{
     public ResponseEntity<String> sendCoin(String sender, String receiver, String amount){
 
 
-        @Value("${cryptoMixer.url.transaction}")
-        String url;
+        //@Value("${cryptoMixer.url.transaction}")
+        String url = "url/";
 
         MultiValueMap<String, String> params= new LinkedMultiValueMap<String, String>();
         params.add("fromAddress", sender);
@@ -44,8 +44,8 @@ public class JobCoinServiceImpl implements JobCoinServiceInt{
     @Override
     public String getBalance(String address){
 
-        @Value("${cryptoMixer.url.address}")
-        String url;
+        //@Value("${cryptoMixer.url.address}")
+        String url = "url";
         url = url + address;
         Address addressResponse = restTemplate.getForObject(url, Address.class);
 

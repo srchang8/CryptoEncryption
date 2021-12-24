@@ -10,7 +10,7 @@ public class TransactionMonitor {
         2. ideally we can check DB address balance and jobcoin service balance to see if there was change
      */
 
-    JobCoinServiceImpl jobCoinServiceImpl = new JobCoinServiceImpl();
+    com.gemini.jobCoin.JobCoinServiceImpl jobCoinServiceImpl = new com.gemini.jobCoin.JobCoinServiceImpl();
     HashMap<String, String > addressWatchList = new HashMap<String, String>();
 
 
