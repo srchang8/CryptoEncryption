@@ -128,6 +128,70 @@ public class Mixer {
         return count;
     }
 
+    public List<List<Integer>> getNodes(TreeNode root){
+
+        HashMap<Integer, List<Integer>> map = new HashMap();
+        List<List<Integer>> result = new ArrayList();
+
+        Queue<NodeInfo> queue = new LinkedList();
+        queue.offer(new NodeInfo(root, 0,0));
+
+        while (!queue.isEmpty()){
+
+            int qSize = queue.size();
+            for (int i=0; i<qSize; i++){
+
+                NodeInfo nI = queue.poll();
+                if (nI.node == null) continue;
+
+                if (!map.containsKey(nI.col)){
+                    map.put(nI.col, new ArrayList());
+                }
+
+
+                map.get(nI.col).add(nI.node.val);
+
+                queue.offer(new NodeInfo(nI.node.left, nI.col-1, nI.row+1));
+                queue.offer(new NodeInfo(nI.node.right, nI.col+1, nI.row+1));
+
+            }
+
+            List<Integer> sortedKeys = new ArrayList(map.keySet());
+            Collections.sort(sortedKeys);
+
+            for (int i=0; i<sortedKeys.size(); i++){
+                result.add(map.get(sortedKeys.get(i)));
+            }
+
+        }
+
+
+        return result;
+
+
+    }
+
+    //TODO: replace these classes
+    class NodeInfo{
+        TreeNode node;
+        int col;
+        int row;
+
+        NodeInfo(TreeNode node_, int col_, int row_){
+            this.node = node_;
+            this.col = col_;
+            this.row = row_;
+        }
+    }
+
+    class TreeNode{
+
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+    }
+
 
 }
 

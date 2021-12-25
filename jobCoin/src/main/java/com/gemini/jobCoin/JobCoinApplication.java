@@ -27,8 +27,8 @@ public class JobCoinApplication {
 		 */
 
 
-		Mixer mixer = new Mixer();
-		JobCoinServiceImpl jobCoinServiceImpl = new JobCoinServiceImpl();
+		com.gemini.jobCoin.Mixer mixer = new com.gemini.jobCoin.Mixer();
+		com.gemini.jobCoin.JobCoinServiceImpl jobCoinServiceImpl = new com.gemini.jobCoin.JobCoinServiceImpl();
 
 		List<String> depositAddressList = new ArrayList<String>();
 
