@@ -108,5 +108,35 @@ public class Mixer {
 
     }
 
+    public int searchKsum(int[] nums, int k){
+        HashMap<Integer, Integer> map = new HashMap();
+        map.put(0,1);
+
+        int count = 0;
+        int currSum = 0;
+
+        for (int i=0; i<nums.length; i++){
+            currSum += nums[i];
+            int missingSum = currSum - k;
+
+            if (map.containsKey(missingSum)){
+                count += map.get(missingSum);
+            }
+            map.put(currSum, map.getOrDefault(currSum, 0) + 1);
+        }
+
+        return count;
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
