@@ -193,6 +193,55 @@ public class Mixer {
     }
 
 
+    class Node{
+
+        int val;
+        Node left;
+        Node right;
+
+        public Node() {}
+
+        public Node(int _val) {
+            val = _val;
+        }
+
+        public Node(int _val,Node _left,Node _right) {
+            val = _val;
+            left = _left;
+            right = _right;
+        }
+
+    }
+
+
+    public Node convertBST(Node root){
+
+        Node dummy = new Node(-1);
+        Node prev = dummy;
+
+        Stack<Node> stack = new Stack();
+
+        while (!stack.isEmpty() || root != null){
+
+            while (root != null){
+                stack.push(root);
+                root = root.left;
+            }
+
+            root = stack.pop();
+            prev.right = root;
+            root.left = prev;
+            prev = root;
+
+            root = root.right;
+        }
+
+        prev.right = dummy.right;
+        dummy.right.left = prev;
+
+        return dummy.right;
+    }
+
 }
 
 
