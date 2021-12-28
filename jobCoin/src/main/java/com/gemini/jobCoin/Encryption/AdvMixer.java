@@ -33,7 +33,7 @@ public class AdvMixer {
         }
 
         return sb.toString().replaceAll("\\*", "");
-Q
+
     }
 
 
@@ -77,6 +77,51 @@ Q
             }
         }
         return res;
+    }
+
+
+
+    public void nextPermutation (int[] nums){
+
+        /*
+
+        1,2,3,4  -  1,2,4,3 - swap end
+
+        1,2,4,3  - find mod, find next biggest after mod, swap mod with next big, reverse everything after mod index
+
+        4,3,2,1 - 1,2,3,4 - reverse all
+
+         */
+
+        int mod = nums.length-2;
+        int tail = nums.length-1;
+
+        while (mod >= 0 && nums[mod] >= nums[mod+1]) mod--;
+
+        if (mod == nums.length-2){
+            swap(nums, mod, tail);
+            return;
+        }
+
+        if (mod < 0){
+            reverse(nums, 0);
+            return;
+        }
+
+        while (nums[tail] >= nums[mod]) tail--;
+
+        swap(nums, mod, tail);
+        reverse(nums, mod);
+
+
+    }
+
+    public void reverse(int[] nums, int start){
+
+    }
+
+    public void swap(int[] nums, int i, int j){
+
     }
 }
 
