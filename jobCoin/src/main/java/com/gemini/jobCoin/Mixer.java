@@ -279,6 +279,35 @@ public class Mixer {
         return p;
     }
 
+
+    public int findMaxCon(int[] nums){
+
+        HashSet<Integer> set = new HashSet();
+        for (int n : nums){
+            set.add(n);
+        }
+
+        int maxConsecutive = 0;
+        int max = 0;
+        int currNum = 0;
+
+        for (int num : set){
+
+            if (!set.contains(nums-1)){
+                maxConsecutive = 1;
+                currNum = num;
+
+                while (set.contains(currNum+1)){
+                    maxConsecutive++;
+                    currNum += 1;
+                }
+                max = Math.max(maxConsecutive, max);
+            }
+        }
+
+        return max;
+    }
+
 }
 
 
