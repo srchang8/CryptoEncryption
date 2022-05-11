@@ -308,6 +308,31 @@ public class Mixer {
         return max;
     }
 
+
+
+
+    public int[] findExceptSelf(int[] nums){
+
+        int[] leftProduct = new int[nums.length];
+        int[] rightProduct = new int[nums.length];
+        leftProduct[0] = 1;
+        rightProduct[nums.length-1] = 1;
+        intp[] result = new int[nums.length];
+
+        for (int i=1; i<leftProduct.length; i++){
+            leftProduct[i] = nums[i-1] * leftProduct[i-1];
+        }
+
+        for (int i=rightProduct.length-2; i>=0; i--){
+            rightProduct[i] = nums[i+1] * rightProduct[i+1];
+        }
+
+        for (int i=0; i<nums.length; i++){
+            result[i] = leftProduct[i] * rightProduct[i];
+        }
+
+        return result;
+    }
 }
 
 
