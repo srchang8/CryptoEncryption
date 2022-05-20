@@ -333,6 +333,37 @@ public class Mixer {
 
         return result;
     }
+
+    public String removeInvalidChar(String s){
+
+        StringBuilder result = new StringBuilder(s);
+        Stack<Integer> stack = new Stack();
+
+        for (int i=0; i<s.length(); i++){
+            char c = s.charAt(i);
+
+            if (c == '('){
+                stack.push(c);
+                continue;
+            }
+
+            if (c == ')'){
+                if (!stack.isEmpty()){
+                    stack.pop();
+                }else{
+                    result.setCharAt(i, '*');
+                }
+            }
+        }
+
+        while (!stack.isEmpty()){
+            result.setCharAt(stack.pop(), '*');
+        }
+
+        return result.toString().replaceAll("\\*" "");
+    }
+
+
 }
 
 
