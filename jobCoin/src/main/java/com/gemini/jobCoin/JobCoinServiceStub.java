@@ -64,6 +64,8 @@ public class JobCoinServiceStub implements JobCoinServiceInt {
             responseEntity = mapper.readValue(jsonFileNoFunds, String.class);
         }
         */
+
+        List<Integer> result = new ArrayList();
         return new ResponseEntity<String>(null);
 
     }
